@@ -2,6 +2,48 @@ doctype html
 html
   head
     title= title
-    link(rel='stylesheet', href='/stylesheets/style.css')
+    //
+      <link rel="stylesheet" href="stylesheets/styles.css">
+      <link rel="stylesheet" href="stylesheets/pygment_trac.css">
+      <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    // JavaScript necesarios
+    script(src='https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js')
+    |         
+    script(type='text/javascript', src='actions.js')
+    |         
+    script(type='text/javascript', src='tokens.js')
+    |         
+    script(type='text/javascript', src='parse.js')
+    |         
+    script(type='text/javascript', src='main.js')
+    |         
+    |         
+    meta(charset='utf-8')
+    |         
+    meta(http-equiv='X-UA-Compatible', content='IE=edge')
+    |         
+    meta(name='viewport', content='width=device-width, initial-scale=1')
+    |         
+    meta(name='description', content='')
+    |         
+    meta(name='Germán Paz Méndez', content='')
+    |         
+    link(rel='icon', href='assets/img/favicon.ico')
+    // Bootstrap core CSS
+    link(href='stylesheets/assets/css/bootstrap.css', rel='stylesheet')
+    // Custom styles for this template
+    link(href='stylesheets/assets/css/ionicons.min.css', rel='stylesheet')
+    |         
+    link(href='stylesheets/assets/css/style.css', rel='stylesheet')
+    |         
+    link(href='stylesheets/global.css', rel='stylesheet', type='text/css')
+    // IE10 viewport hack for Surface/desktop Windows 8 bug
+    script(src='stylesheets/assets/js/ie10-viewport-bug-workaround.js', data-cover='')
+    |         
+    script(src='tests/blanket.js')
+    |         
+    script(type='text/javascript', src='https://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.5.2/underscore-min.js')
+    |         
+    script(src='https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js')
+  |     
   body
-    block content
