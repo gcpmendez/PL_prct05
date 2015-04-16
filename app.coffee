@@ -7,6 +7,7 @@ bodyParser = require('body-parser')
 routes = require('./routes/index')
 users = require('./routes/users')
 app = express()
+
 # view engine setup
 app.set 'views', path.join(__dirname, 'views')
 app.set 'view engine', 'jade'
