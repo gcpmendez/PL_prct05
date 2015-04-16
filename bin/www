@@ -1,5 +1,4 @@
 
-
 /*
  * Module dependencies.
  */
@@ -26,7 +25,7 @@ function normalizePort(val) {
   }
 
   return false;
-}
+}    
 
 /**
  * Get port from environment and store in Express.
