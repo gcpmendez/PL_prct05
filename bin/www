@@ -1,11 +1,8 @@
-<<<<<<< HEAD
-=======
 #!/usr/bin/env node
 // Note the new way of requesting CoffeeScript since 1.7.x
 require('coffee-script/register');
 // This bootstraps your server main file
 require('./www.coffee');
->>>>>>> f3cb98208d0d4f4f05785e9289d91a81fb407fa6
 
 /*
  * Module dependencies.
