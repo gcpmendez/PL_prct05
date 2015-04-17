@@ -18,15 +18,16 @@ block content
                         |                            
                         textarea#INPUT(autofocus='', cols='80', rows='5', placeholder='Escriba aquí o arrastre un fichero JavaScript', style='border:dashed 2px black; background-color:#f5f5f5;color:#0000ff;')
                         |                            
-                        br
-                        |
-                        button(type='button', onclick="dump('/examples/example1.txt');") Ejemplo 1
-                        button(type='button', onclick="dump('/examples/example2.txt');") Ejemplo 2
-                        button(type='button', onclick="dump('/examples/example3.txt');") Ejemplo 3
-                        |                            
-                        #upload
-                          input#select(type='file', accept='.js')
-                        |                            
+                        div
+                           table
+                            tr
+                              td
+                                #upload
+                                  input#select(type='file', accept='.js')
+                              td
+                                button(type='button', onclick="dump('/examples/example1.txt');") Ejemplo 1
+                                button(type='button', onclick="dump('/examples/example2.txt');") Ejemplo 2
+                                button(type='button', onclick="dump('/examples/example3.txt');") Ejemplo 3
                         br
                         |                            
                         h2 Salida
