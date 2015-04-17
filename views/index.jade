@@ -1,5 +1,4 @@
 extends layout
-
 block content
   #g
       .container
@@ -15,29 +14,51 @@ block content
                       |                         
                       div(align='center')
                         h2 Entrada
+                        script(src='javascript/main.js', type='text/javascript')
                         |                            
                         textarea#INPUT(autofocus='', cols='80', rows='5', placeholder='Escriba aquí o arrastre un fichero JavaScript', style='border:dashed 2px black; background-color:#f5f5f5;color:#0000ff;')
-                        |                            
+                        |      
+                        .loadfile
                         div
                            table
                             tr
                               td
                                 #upload
-                                  input#select(type='file', accept='.js')
+                                  input#files(type='file', accept='.js')
                               td
-                                button(type='button', onclick="dump('/examples/example1.txt');") Ejemplo 1
-                                button(type='button', onclick="dump('/examples/example2.txt');") Ejemplo 2
-                                button(type='button', onclick="dump('/examples/example3.txt');") Ejemplo 3
+                                button#example1(onclick="dump('/examples/example1.txt');", type='button') example1
+                                button#example2(onclick="dump('/examples/example2.txt');", type='button') example2
+                                button#example3(onclick="dump('/examples/example3.txt');", type='button') example3
                         br
-                        |                            
+                        |           
+                        script(type='text/javascript').
+                          function dump(fileName) {
+                          $.get(fileName, function (data) {
+                          $("#INPUT").val(data);
+                          });
+                          };
+                          document.getElementById('files').addEventListener('change', CopyMe, false);
+                          function CopyMe(evt) {
+                          var file = evt.target.files[0];
+                          if (file) {
+                          var reader = new FileReader();
+                          reader.onload = function(e) {
+                          INPUT.innerHTML = e.target.result;
+                          }
+                          var c = reader.readAsText(file);
+                          }
+                          else { alert("Failed to load file"); }
+                          }
+                        |  
                         h2 Salida
                         |                            
-                        #cajita
-                          textarea#OUTPUT(autofocus='', cols='80', rows='5', style='border:solid 1px black; background-color:#f5f5f5;color:#0000ff;')
-                        |                            
-                        button#PARSE(type='button')    Analizar   
+                        textarea#OUTPUT(cols='80', rows='5', style='border:solid 1px black; background-color:#f5f5f5;color:#0000ff;')
+                        |    
+                        br
+                        button#PARSE.mylink(value="parse" type='button') Analizar   
                         |                         
                         br
+                        pre#OUTPUT
                         br
                         |          
                         #enlaces
