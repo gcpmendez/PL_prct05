@@ -42,7 +42,7 @@ app.use (err, req, res, next) ->
     error: {}
   return
   
-module.exports = (grunt) ->
+module.exports = (app) ->
   grunt.initConfig
     coffee:
       dev:
