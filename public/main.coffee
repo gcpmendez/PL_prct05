@@ -1,7 +1,7 @@
 main = ()-> 
   source = INPUT.value
   try 
-    result = JSON.stringify(parse(source), null, 2)
+    result = JSON.stringify(parse(!{source}), null, 2)
   catch result
     result = """<div class="error">#{result}</div>"""
 
@@ -225,6 +225,7 @@ parse = (input) ->
     result
 
   tree = statements(input)
+  
   if lookahead?
     throw "Syntax Error parsing statements. " + 
       "Expected 'end of input' and found '" + 
