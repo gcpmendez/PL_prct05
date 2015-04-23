@@ -15,7 +15,7 @@ router = express.Router()
 
 module.exports =
   index: (req, res) ->
-    res.render 'index', { title: 'Analizador Descendente' }
+    res.render 'index', { title: 'Predictive Recursive Descent Parser' }
     
     
     
