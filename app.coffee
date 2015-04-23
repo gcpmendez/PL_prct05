@@ -1,36 +1,44 @@
-###
-# Module dependencies
-###
-
 express = require('express')
+path = require('path')
+favicon = require('serve-favicon')
+logger = require('morgan')
+cookieParser = require('cookie-parser')
+bodyParser = require('body-parser')
+routes = require('./routes/index.coffee')
 app = express()
-sassMiddleware = require('node-sass-middleware')
-coffeeMiddleware = require('coffee-middleware')
-app.set 'port', process.env.PORT or 5000
-app.use '/stylesheets', express.static(__dirname + '/views')
-#app.use("/scripts", express.static(__dirname + '/views'));
-app.use express.static(__dirname + '/public')
-app.use express.static(__dirname + '/views')
-app.set 'views', __dirname + '/views'
+# view engine setup
+app.set 'views', path.join(__dirname, 'views')
 app.set 'view engine', 'jade'
-#app.use(express.logger('dev'))
-#SASS
-app.use sassMiddleware(
-  src: __dirname + '/public/stylesheets'
-  dest: __dirname + '/public/stylesheets'
-  prefix: '/stylesheets'
-  debug: true)
-#Coffee
-app.use coffeeMiddleware(
-  src: __dirname
-  dest: __dirname + '/views'
-  debug: true)
-app.get '/', (req, res) ->
-  res.render 'index', title: 'Home'
+# uncomment after placing your favicon in /public
+#app.use(favicon(__dirname + '/public/favicon.ico'));
+app.use logger('dev')
+app.use bodyParser.json()
+app.use bodyParser.urlencoded(extended: false)
+app.use cookieParser()
+app.use express.static(path.join(__dirname, 'public'))
+app.get '/', routes.index
+# catch 404 and forward to error handler
+app.use (req, res, next) ->
+  err = new Error('Not Found')
+  err.status = 404
+  next err
   return
-app.get '/test', (request, response) ->
-  response.render 'test', title: 'test'
+# error handlers
+# development error handler
+# will print stacktrace
+if app.get('env') == 'development'
+  app.use (err, req, res, next) ->
+    res.status err.status or 500
+    res.render 'error',
+      message: err.message
+      error: err
+    return
+# production error handler
+# no stacktraces leaked to user
+app.use (err, req, res, next) ->
+  res.status err.status or 500
+  res.render 'error',
+    message: err.message
+    error: {}
   return
-app.listen app.get('port'), ->
-  console.log 'Node app is running at localhost:' + app.get('port')
-  return
+module.exports = app
