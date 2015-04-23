@@ -41,6 +41,7 @@ app.use (err, req, res, next) ->
     message: err.message
     error: {}
   return
+  
 module.exports = (grunt) ->
   grunt.initConfig
     coffee:
