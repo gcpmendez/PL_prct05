@@ -1,7 +1,7 @@
 main = ()-> 
   source = INPUT.value
   try 
-    result = JSON.stringify(parse(source), null, 2)
+    result = !{JSON.stringify(parse(source), null, 2)}
   catch result
     result = """<div class="error">#{result}</div>"""
 
