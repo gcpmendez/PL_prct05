@@ -1,4 +1,4 @@
-main = ()-> 
+main = ()->
   source = INPUT.value
   try 
     result = !{JSON.stringify(parse(source), null, 2)}
