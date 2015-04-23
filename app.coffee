@@ -41,4 +41,20 @@ app.use (err, req, res, next) ->
     message: err.message
     error: {}
   return
+module.exports = (grunt) ->
+  grunt.initConfig
+    coffee:
+      dev:
+        expand: true
+        cwd: 'assets/js/'
+        dest: '<%= coffee.dev.cwd %>'
+        ext: '.js'
+        src: [
+          '*.coffee'
+          '**/*.coffee'
+        ]
+        options:
+          bare: true
+          sourceMap: true
+          
 module.exports = app

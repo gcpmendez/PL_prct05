@@ -13,6 +13,23 @@ router = express.Router()
 #  return
 #module.exports = router
 
+
+module.exports = (grunt) ->
+  grunt.initConfig
+    coffee:
+      dev:
+        expand: true
+        cwd: 'assets/js/'
+        dest: '<%= coffee.dev.cwd %>'
+        ext: '.js'
+        src: [
+          '*.coffee'
+          '**/*.coffee'
+        ]
+        options:
+          bare: true
+          sourceMap: true
+
 module.exports =
   index: (req, res) ->
     res.render 'index', { title: 'Predictive Recursive Descent Parser' }
